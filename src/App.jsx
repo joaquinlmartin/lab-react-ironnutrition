@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
 import 'bulma/css/bulma.css';
-import foodsJSON from './foods.json';
+import foods from './foods.json';
 import FoodBox from "./components/FoodBox";
 
 export default function App() {
-  const [foods, setFoods] = useState(foodsJSON);
+  const [food, setFood] = useState(foods);
   return (
     <div className="App">
      <h1>IronNutrition</h1>
-      {foods.map((food) => {
+      {food.map(food => {
         return <FoodBox
               key={food.id}
               name={food.name}
