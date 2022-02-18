@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function FoodBox ({name, calories, image, quantity}) {
     return(
         <div>
@@ -7,7 +8,7 @@ export default function FoodBox ({name, calories, image, quantity}) {
   <article className="media">
     <div className="media-left">
       <figure className="image is-64x64">
-        <img src={image} />
+        <img src={image} alt="img"/>
       </figure>
     </div>
     <div className="media-content">
