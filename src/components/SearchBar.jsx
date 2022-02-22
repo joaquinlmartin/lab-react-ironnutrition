@@ -1,18 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function SearchBar({ onFilter }) {
+export default function SearchBar({ filterFood }) {
     const [input, setInput] = useState('');
 
-    const handleChange = (e) => {
+    const handleBar = (e) => {
         setInput(e.target.value);
-        onFilter(e.target.value);
+        filterFood(e.target.value);
     };
 
     return (
         <div>
             <h2>Search Bar</h2>
-            <input type="search" name="name" value={input} onChange={handleChange}/>
+            <input type="search" name="name" value={input} onChange={handleBar}/>
         </div>
     );
 }

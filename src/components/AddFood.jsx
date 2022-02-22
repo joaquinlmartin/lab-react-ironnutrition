@@ -6,13 +6,13 @@ export default function AddFood({ foods }) {
     const [calories, setCalories] = useState('');
     const [image, setImage] = useState('');
 
-    const handleNameInput = (e) => {
+    const handleName = (e) => {
         setName(e.target.value);
       };
-      const handleCaloriesInput = (e) => {
+      const handleCalories = (e) => {
         setCalories(e.target.value);
       };
-      const handleImageInput = (e) => {
+      const handleImage = (e) => {
         setImage(e.target.value);
       };
     
@@ -20,7 +20,6 @@ export default function AddFood({ foods }) {
         e.preventDefault();
         const newFood = { name, calories, image };
         foods.addFood(newFood);
-        console.log(newFood);
       };
 
     return (
@@ -28,11 +27,11 @@ export default function AddFood({ foods }) {
             <h3>Add new food</h3>
             <form onSubmit={handleSubmit}>
                 <label>Name</label>
-                <input type="text" name="name" value={name} placeholder="Insert name" onChange={handleNameInput}/>
+                <input type="text" name="name" value={name} placeholder="Insert name" onChange={handleName}/>
                 <label>Calories</label>
-                <input type="text" name="calories" value={calories} placeholder="Insert calories" onChange={handleCaloriesInput}/>
+                <input type="text" name="calories" value={calories} placeholder="Insert calories" onChange={handleCalories}/>
                 {
-                    <input type="text" value={image} placeholder="Image" onChange={handleImageInput}/>
+                    <input type="text" value={image} placeholder="Image" onChange={handleImage}/>
                 }
                     <button type="submit">Add</button>
             </form>

@@ -12,19 +12,24 @@ export default function App() {
   const [food, setFood] = useState(foods);
   const [todaysFood, setTodaysFood] = useState(todaysFoodArray);
   
-
+  const filterFood = (input) => {
+    setFood(foods.filter((food) => food.name.includes(input)));
+    if (input === '') {
+      setFood(foods);
+    } else {
+      setFood(
+        foods.filter((food) => 
+          food.name.toLowerCase().includes(input.toLowerCase())
+      )
+     )
+    }
+  };
+ 
   const addNewFood = (newFood) => {
     setFood([...food, newFood]);
   };
 
-  const onFilter = (input) => {
-    setFood(foods.filter((food) => food.name.includes(input)));
-    if (input === '') {
-      setFood(foods);
-    }
-  };
-
-  const onAdd = (todayFood) => {
+  const addFoodToday = (todayFood) => {
     setTodaysFood([...todaysFood, todayFood]);
   };
 
@@ -32,7 +37,7 @@ export default function App() {
     <div className="App">
       <h1>IronNutrition</h1>
       <AddFood addFood={addNewFood} />
-      <SearchBar onFilter={onFilter} />
+      <SearchBar filterFood={filterFood} />
       <div> {food.map((food, i) => {
         return <FoodBox
           key={i}
@@ -40,7 +45,7 @@ export default function App() {
           calories={food.calories}
           image={food.image}
           quantity={food.quantity}
-          onAdd={onAdd}
+          addFoodToday={addFoodToday}
         />
       })}
       </div>
